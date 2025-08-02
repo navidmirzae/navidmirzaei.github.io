@@ -19,6 +19,13 @@
       position: fixed;
       top: 0;
       left: 0;
+      z-index: -2;
+    }
+
+    canvas#planets {
+      position: fixed;
+      top: 0;
+      left: 0;
       z-index: -1;
     }
 
@@ -119,6 +126,7 @@
 </head>
 <body>
   <canvas id="solar"></canvas>
+  <canvas id="planets"></canvas>
   <div class="header">
     <div class="logo">N</div>
     <h1>نوید میرزایی</h1>
@@ -156,18 +164,21 @@
   <script>
     const canvas = document.getElementById('solar');
     const ctx = canvas.getContext('2d');
+    const planetCanvas = document.getElementById('planets');
+    const pctx = planetCanvas.getContext('2d');
     let w, h;
 
     function resize() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
+      w = canvas.width = planetCanvas.width = window.innerWidth;
+      h = canvas.height = planetCanvas.height = window.innerHeight;
     }
 
     window.addEventListener('resize', resize);
     resize();
 
+    // ستاره‌های پس‌زمینه
     let stars = [];
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 300; i++) {
       stars.push({
         x: Math.random() * w,
         y: Math.random() * h,
@@ -176,30 +187,86 @@
       });
     }
 
-    function draw() {
+    function drawStars() {
       ctx.clearRect(0, 0, w, h);
       ctx.fillStyle = '#fff';
-      for (let i = 0; i < stars.length; i++) {
-        let s = stars[i];
+      for (let s of stars) {
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         ctx.fill();
       }
-      update();
-      requestAnimationFrame(draw);
+      updateStars();
     }
 
-    function update() {
-      for (let i = 0; i < stars.length; i++) {
-        stars[i].y += stars[i].d;
-        if (stars[i].y > h) {
-          stars[i].y = 0;
-          stars[i].x = Math.random() * w;
+    function updateStars() {
+      for (let s of stars) {
+        s.y += s.d;
+        if (s.y > h) {
+          s.y = 0;
+          s.x = Math.random() * w;
         }
       }
     }
 
-    draw();
+    // سیارات منظومه شمسی
+    const planets = [
+      { name: 'خورشید', r: 20, d: 0, color: 'yellow' },
+      { name: 'عطارد', r: 4, d: 50, speed: 0.04, angle: 0, color: '#aaa' },
+      { name: 'زهره', r: 5, d: 80, speed: 0.03, angle: 1, color: '#f7c77e' },
+      { name: 'زمین', r: 6, d: 110, speed: 0.02, angle: 2, color: '#3fa9f5' },
+      { name: 'ماه', r: 2, d: 20, speed: 0.08, angle: 0, around: 2, color: '#ccc' },
+      { name: 'مریخ', r: 5, d: 150, speed: 0.018, angle: 3, color: '#f66' },
+      { name: 'مشتری', r: 10, d: 200, speed: 0.015, angle: 4, color: '#ffcc99' },
+      { name: 'زحل', r: 9, d: 250, speed: 0.012, angle: 5, color: '#eed58f' },
+      { name: 'اورانوس', r: 8, d: 300, speed: 0.01, angle: 6, color: '#99ffff' },
+      { name: 'نپتون', r: 8, d: 340, speed: 0.009, angle: 7, color: '#6699ff' },
+      { name: 'پلوتون', r: 3, d: 380, speed: 0.007, angle: 8, color: '#ccc' },
+    ];
+
+    function drawPlanets() {
+      pctx.clearRect(0, 0, w, h);
+      const cx = w / 2;
+      const cy = h / 2;
+
+      for (let p of planets) {
+        if (p.name === 'خورشید') {
+          pctx.beginPath();
+          pctx.arc(cx, cy, p.r, 0, Math.PI * 2);
+          pctx.fillStyle = p.color;
+          pctx.fill();
+          continue;
+        }
+
+        if (p.around !== undefined) {
+          const parent = planets[p.around];
+          const parentX = cx + Math.cos(parent.angle) * parent.d;
+          const parentY = cy + Math.sin(parent.angle) * parent.d;
+          p.angle += p.speed;
+          const x = parentX + Math.cos(p.angle) * p.d;
+          const y = parentY + Math.sin(p.angle) * p.d;
+          pctx.beginPath();
+          pctx.arc(x, y, p.r, 0, Math.PI * 2);
+          pctx.fillStyle = p.color;
+          pctx.fill();
+        } else {
+          p.angle += p.speed;
+          const x = cx + Math.cos(p.angle) * p.d;
+          const y = cy + Math.sin(p.angle) * p.d;
+          pctx.beginPath();
+          pctx.arc(x, y, p.r, 0, Math.PI * 2);
+          pctx.fillStyle = p.color;
+          pctx.fill();
+        }
+      }
+    }
+
+    function animate() {
+      drawStars();
+      drawPlanets();
+      requestAnimationFrame(animate);
+    }
+
+    animate();
   </script>
 </body>
 </html>
