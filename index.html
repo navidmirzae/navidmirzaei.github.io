@@ -63,21 +63,22 @@
     }
 
     .sun {
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       background: radial-gradient(circle, gold, orange, red);
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      box-shadow: 0 0 50px yellow;
+      box-shadow: 0 0 70px yellow;
       z-index: 1;
     }
 
     .moon {
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 12px;
       background: #ccc;
       animation: orbit 4s linear infinite;
+      border-radius: 50%;
     }
 
     @keyframes orbit {
@@ -118,15 +119,18 @@
 </head>
 <body>
   <div class="solar-system">
-    <div class="planet sun"><span>Sun</span></div>
-    <div class="planet" style="--distance: 150px; width: 20px; height: 20px; background: blue; animation-duration: 6s;"><span>Earth</span>
-      <div class="moon" style="--distance: 30px;"><span>Moon</span></div>
+    <div class="planet sun"><span>خورشید</span></div>
+    <div class="planet" style="--distance: 120px; width: 16px; height: 16px; background: gray; animation-duration: 4s;"><span>عطارد</span></div>
+    <div class="planet" style="--distance: 160px; width: 18px; height: 18px; background: orange; animation-duration: 6s;"><span>زهره</span></div>
+    <div class="planet" style="--distance: 200px; width: 22px; height: 22px; background: blue; animation-duration: 8s;"><span>زمین</span>
+      <div class="moon" style="--distance: 30px;"><span>ماه</span></div>
     </div>
-    <div class="planet" style="--distance: 200px; width: 30px; height: 30px; background: #c96; animation-duration: 10s;"><span>Jupiter</span></div>
-    <div class="planet" style="--distance: 250px; width: 25px; height: 25px; background: #ffcc66; animation-duration: 12s;"><span>Saturn</span></div>
-    <div class="planet" style="--distance: 300px; width: 20px; height: 20px; background: #66ccff; animation-duration: 14s;"><span>Uranus</span></div>
-    <div class="planet" style="--distance: 350px; width: 18px; height: 18px; background: #3333ff; animation-duration: 16s;"><span>Neptune</span></div>
-    <div class="planet" style="--distance: 400px; width: 10px; height: 10px; background: #999; animation-duration: 18s;"><span>Pluto</span></div>
+    <div class="planet" style="--distance: 240px; width: 20px; height: 20px; background: red; animation-duration: 10s;"><span>مریخ</span></div>
+    <div class="planet" style="--distance: 300px; width: 30px; height: 30px; background: #c96; animation-duration: 12s;"><span>پروتون</span></div>
+    <div class="planet" style="--distance: 360px; width: 28px; height: 28px; background: #ffcc66; animation-duration: 14s;"><span>زحل</span></div>
+    <div class="planet" style="--distance: 420px; width: 26px; height: 26px; background: #66ccff; animation-duration: 16s;"><span>اورانوس</span></div>
+    <div class="planet" style="--distance: 480px; width: 24px; height: 24px; background: #3333ff; animation-duration: 18s;"><span>نپتون</span></div>
+    <div class="planet" style="--distance: 540px; width: 14px; height: 14px; background: #999; animation-duration: 20s;"><span>پلوتون</span></div>
   </div>
 
   <header>
@@ -136,16 +140,16 @@
 
   <section class="project-section">
     <div class="project-card">
-      <h3>پروژه ۱</h3>
-      <p>توضیحاتی درباره پروژه اول شامل کاربرد، تکنولوژی‌ها و ویژگی‌ها.</p>
+      <h3>پروژه اول</h3>
+      <p>پروژه‌ای در حوزه طراحی رابط کاربری با استفاده از HTML، CSS و JavaScript که شامل انیمیشن و تعامل با کاربر است.</p>
     </div>
     <div class="project-card">
-      <h3>پروژه ۲</h3>
-      <p>توضیحاتی درباره پروژه دوم شامل کاربرد، تکنولوژی‌ها و ویژگی‌ها.</p>
+      <h3>پروژه دوم</h3>
+      <p>سامانه مدیریتی با بک‌اند PHP و دیتابیس MySQL، شامل ماژول ثبت‌نام، ورود، مدیریت کاربران و گزارش‌گیری.</p>
     </div>
     <div class="project-card">
-      <h3>پروژه ۳</h3>
-      <p>توضیحاتی درباره پروژه سوم شامل کاربرد، تکنولوژی‌ها و ویژگی‌ها.</p>
+      <h3>پروژه سوم</h3>
+      <p>برنامه موبایلی با Flutter برای کنترل و زمان‌بندی مصرف دارو با قابلیت ارسال یادآور و نمایش تأثیر دارو بر اعضای بدن.</p>
     </div>
   </section>
 
