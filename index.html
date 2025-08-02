@@ -5,264 +5,202 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Navid Mirzaei | Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: 'Vazirmatn', sans-serif;
+    }
+    body {
+      background: #000;
       color: #fff;
       overflow-x: hidden;
-      background: radial-gradient(ellipse at center, #000 0%, #020202 100%);
     }
-
-    canvas#solar {
+    canvas {
       position: fixed;
       top: 0;
       left: 0;
-      z-index: -2;
-    }
-
-    canvas#planets {
-      position: fixed;
-      top: 0;
-      left: 0;
+      width: 100vw;
+      height: 100vh;
       z-index: -1;
     }
-
     .header {
+      position: absolute;
+      top: 20px;
+      right: 20px;
       text-align: right;
-      padding: 2rem;
     }
-
     .header h1 {
-      font-size: 2.5rem;
+      font-size: 28px;
       font-weight: bold;
-      color: gold;
-      text-shadow: 2px 2px 10px #000;
+      color: #f5c518;
+      text-shadow: 2px 2px 5px #000;
     }
-
     .header h2 {
-      font-size: 1.2rem;
+      font-size: 14px;
       color: #ccc;
     }
-
-    .logo {
-      font-size: 3rem;
-      font-weight: bold;
-      color: #FFD700;
-      text-shadow: 0 0 15px #FFD700;
-      margin-left: 1rem;
-    }
-
     .typing {
-      font-size: 1.5rem;
-      padding: 1rem;
-      text-align: center;
-      animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 3px solid #FFD700;
-      width: 30ch;
-      margin: auto;
+      position: absolute;
+      top: 90px;
+      right: 20px;
+      font-size: 20px;
+      color: #0ff;
+      text-shadow: 1px 1px 4px #000;
     }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 30ch }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: #FFD700; }
-    }
-
     .projects {
+      position: absolute;
+      top: 200px;
+      left: 20px;
       display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin: 2rem;
-      flex-wrap: wrap;
+      flex-direction: row;
+      gap: 20px;
     }
-
     .card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid #FFD70033;
-      border-radius: 1rem;
-      padding: 1rem;
-      width: 280px;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      width: 250px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 20px #0ff3;
+      cursor: pointer;
+      transition: transform 0.3s;
     }
-
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+      transform: scale(1.05);
     }
-
     .contact {
-      text-align: center;
-      padding: 2rem;
-      background-color: rgba(0,0,0,0.6);
+      position: absolute;
+      bottom: 40px;
+      right: 20px;
+      color: #ffb400;
     }
-
-    .contact h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: gold;
+    .contact a {
+      color: #ffb400;
+      text-decoration: none;
     }
-
-    .contact p {
-      font-size: 1.1rem;
-      margin: 0.5rem;
+    .signature {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-family: cursive;
+      font-size: 18px;
+      color: #888;
     }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      color: #aaa;
-      font-size: 0.9rem;
+    .planet-label {
+      position: absolute;
+      color: white;
+      font-size: 12px;
+      pointer-events: none;
+      text-shadow: 1px 1px 3px black;
     }
   </style>
 </head>
 <body>
-  <canvas id="solar"></canvas>
-  <canvas id="planets"></canvas>
+  <canvas id="space"></canvas>
   <div class="header">
-    <div class="logo">N</div>
     <h1>نوید میرزایی</h1>
-    <h2>NAVIDMIRZAEI</h2>
+    <h2>NAVID MIRZAEI</h2>
   </div>
-
-  <div class="typing">برنامه‌نویس، طراح و توسعه‌دهنده حرفه‌ای</div>
-
+  <div class="typing" id="typing"></div>
   <div class="projects">
-    <div class="card">
-      <h3>nTranslator</h3>
-      <p>مترجم هوشمند چندزبانه با پشتیبانی آفلاین.</p>
-    </div>
-    <div class="card">
-      <h3>MedAssist</h3>
-      <p>اپلیکیشن پزشکی و داروسازی با نقشه بدن.</p>
-    </div>
-    <div class="card">
-      <h3>BodyFit Pro</h3>
-      <p>برنامه بدنسازی و تغذیه حرفه‌ای با ویدیوهای آموزشی.</p>
-    </div>
+    <div class="card">پروژه اول</div>
+    <div class="card">پروژه دوم</div>
+    <div class="card">پروژه سوم</div>
   </div>
-
   <section class="contact">
     <h2>تماس با من</h2>
     <p><i class="fas fa-phone"></i> شماره تماس: <strong>09166674708</strong></p>
     <p><i class="fas fa-envelope"></i> ایمیل: <strong><a href="mailto:navidmirzae@gmail.com">navidmirzae@gmail.com</a></strong></p>
     <p><i class="fab fa-instagram"></i> اینستاگرام: <strong><a href="https://instagram.com/navidmirzae1360" target="_blank">@navidmirzae1360</a></strong></p>
   </section>
-
-  <footer>
-    © 2025 Navid Mirzaei — Code With Passion
-  </footer>
-
+  <div class="signature">Navid Mirzaei © 2025</div>
   <script>
-    const canvas = document.getElementById('solar');
+    // Typing Effect
+    const text = "Full Stack Developer | Motion Designer | AI Enthusiast";
+    let i = 0;
+    function typing() {
+      if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, 50);
+      }
+    }
+    typing();
+  </script>
+  <script>
+    const canvas = document.getElementById('space');
     const ctx = canvas.getContext('2d');
-    const planetCanvas = document.getElementById('planets');
-    const pctx = planetCanvas.getContext('2d');
-    let w, h;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    function resize() {
-      w = canvas.width = planetCanvas.width = window.innerWidth;
-      h = canvas.height = planetCanvas.height = window.innerHeight;
-    }
+    let stars = [], planets = [];
 
-    window.addEventListener('resize', resize);
-    resize();
-
-    // ستاره‌های پس‌زمینه
-    let stars = [];
-    for (let i = 0; i < 300; i++) {
-      stars.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        r: Math.random() * 1.5 + 0.5,
-        d: Math.random() * 0.5 + 0.05
-      });
-    }
-
-    function drawStars() {
-      ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = '#fff';
-      for (let s of stars) {
+    function Star() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.radius = Math.random() * 1.5;
+      this.alpha = Math.random();
+      this.draw = function () {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = 'white';
         ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fill();
-      }
-      updateStars();
-    }
-
-    function updateStars() {
-      for (let s of stars) {
-        s.y += s.d;
-        if (s.y > h) {
-          s.y = 0;
-          s.x = Math.random() * w;
-        }
+        ctx.restore();
       }
     }
 
-    // سیارات منظومه شمسی
-    const planets = [
-      { name: 'خورشید', r: 20, d: 0, color: 'yellow' },
-      { name: 'عطارد', r: 4, d: 50, speed: 0.04, angle: 0, color: '#aaa' },
-      { name: 'زهره', r: 5, d: 80, speed: 0.03, angle: 1, color: '#f7c77e' },
-      { name: 'زمین', r: 6, d: 110, speed: 0.02, angle: 2, color: '#3fa9f5' },
-      { name: 'ماه', r: 2, d: 20, speed: 0.08, angle: 0, around: 2, color: '#ccc' },
-      { name: 'مریخ', r: 5, d: 150, speed: 0.018, angle: 3, color: '#f66' },
-      { name: 'مشتری', r: 10, d: 200, speed: 0.015, angle: 4, color: '#ffcc99' },
-      { name: 'زحل', r: 9, d: 250, speed: 0.012, angle: 5, color: '#eed58f' },
-      { name: 'اورانوس', r: 8, d: 300, speed: 0.01, angle: 6, color: '#99ffff' },
-      { name: 'نپتون', r: 8, d: 340, speed: 0.009, angle: 7, color: '#6699ff' },
-      { name: 'پلوتون', r: 3, d: 380, speed: 0.007, angle: 8, color: '#ccc' },
+    for (let i = 0; i < 300; i++) stars.push(new Star());
+
+    // Planets array
+    const planetData = [
+      { name: "خورشید", r: 0, size: 50, color: "#FFD700", glow: true },
+      { name: "زمین", r: 130, size: 10, color: "#00f" },
+      { name: "ماه", r: 150, size: 5, color: "#ccc" },
+      { name: "زحل", r: 190, size: 15, color: "#c93", ring: true },
+      { name: "اورانوس", r: 230, size: 12, color: "#0ff" },
+      { name: "نپتون", r: 270, size: 12, color: "#00aaff" }
     ];
 
-    function drawPlanets() {
-      pctx.clearRect(0, 0, w, h);
-      const cx = w / 2;
-      const cy = h / 2;
-
-      for (let p of planets) {
-        if (p.name === 'خورشید') {
-          pctx.beginPath();
-          pctx.arc(cx, cy, p.r, 0, Math.PI * 2);
-          pctx.fillStyle = p.color;
-          pctx.fill();
-          continue;
-        }
-
-        if (p.around !== undefined) {
-          const parent = planets[p.around];
-          const parentX = cx + Math.cos(parent.angle) * parent.d;
-          const parentY = cy + Math.sin(parent.angle) * parent.d;
-          p.angle += p.speed;
-          const x = parentX + Math.cos(p.angle) * p.d;
-          const y = parentY + Math.sin(p.angle) * p.d;
-          pctx.beginPath();
-          pctx.arc(x, y, p.r, 0, Math.PI * 2);
-          pctx.fillStyle = p.color;
-          pctx.fill();
-        } else {
-          p.angle += p.speed;
-          const x = cx + Math.cos(p.angle) * p.d;
-          const y = cy + Math.sin(p.angle) * p.d;
-          pctx.beginPath();
-          pctx.arc(x, y, p.r, 0, Math.PI * 2);
-          pctx.fillStyle = p.color;
-          pctx.fill();
-        }
-      }
-    }
-
+    let angle = 0;
     function animate() {
-      drawStars();
-      drawPlanets();
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(star => star.draw());
+
+      const cx = canvas.width / 2;
+      const cy = canvas.height / 2;
+
+      planetData.forEach((p, index) => {
+        const a = angle * (1 + index * 0.05);
+        const x = cx + p.r * Math.cos(a);
+        const y = cy + p.r * Math.sin(a);
+
+        ctx.beginPath();
+        ctx.fillStyle = p.color;
+        ctx.shadowColor = p.glow ? p.color : "transparent";
+        ctx.shadowBlur = p.glow ? 40 : 0;
+        ctx.arc(x, y, p.size, 0, 2 * Math.PI);
+        ctx.fill();
+
+        if (p.ring) {
+          ctx.beginPath();
+          ctx.strokeStyle = "#cc9";
+          ctx.lineWidth = 2;
+          ctx.ellipse(x, y, p.size + 4, p.size, 0, 0, 2 * Math.PI);
+          ctx.stroke();
+        }
+
+        // Label each planet
+        ctx.font = "12px Vazirmatn";
+        ctx.fillStyle = "#fff";
+        ctx.fillText(p.name, x + p.size + 4, y);
+      });
+
+      angle += 0.005;
       requestAnimationFrame(animate);
     }
 
