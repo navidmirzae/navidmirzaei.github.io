@@ -1,120 +1,189 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Navid Mirzaei | Android Dev</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navid Mirzaei - معرفی</title>
   <style>
-    html,body { margin:0;padding:0; font-family:'Vazirmatn'; background:#000; overflow-x:hidden; color:#fff; }
-    #cosmo-bg { position:fixed; top:0;left:0;width:100%;height:100%; z-index:-1;
-      background: radial-gradient(circle at center, #202020 0%, #000 70%);
-      animation: glow-bg 15s ease-in-out infinite;
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@500;700&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    @keyframes glow-bg {
-      0%,100% { background: radial-gradient(circle at center, #202020, #000); }
-      50% { background: radial-gradient(circle at center, #303030, #101010); }
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: radial-gradient(ellipse at center, #0a0a0a 0%, #000000 100%);
+      overflow: hidden;
+      color: white;
     }
-
-    .name-header { position:fixed; top:30px; right:40px; text-align:right; z-index:10; }
+    .container {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 3rem;
+      direction: rtl;
+    }
+    .name {
+      font-size: 3rem;
+      font-weight: 700;
+      color: gold;
+      text-shadow: 0 0 10px #ffda6a, 0 0 20px #ffd700;
+      transform: translateZ(0);
+    }
+    .name-en {
+      font-size: 1.5rem;
+      color: #ddd;
+      margin-top: 0.5rem;
+      text-shadow: 0 0 5px #888;
+    }
     .logo-n {
-      font-size:60px; font-weight:900; color:#ffd700;
-      text-shadow: 4px 4px 0 #aa8800, 8px 8px 0 #775500, 0 0 20px rgba(255,215,0,0.6);
-      transform: rotateX(10deg);
-      display:inline-block; margin-left:8px;
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      font-size: 5rem;
+      font-weight: 900;
+      color: #00ffff;
+      text-shadow: 0 0 10px #0ff, 0 0 30px #0ff;
     }
-    .name-header h1 {
-      display:inline-block;
-      font-size:32px; font-weight:900; color:#ffd700;
-      text-shadow: 3px 3px 0 #aa8800, 6px 6px 0 #775500, 0 0 15px rgba(255,215,0,0.6);
-      transform: rotateX(5deg);
-      margin:0;
+    .typing {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      height: 2rem;
+      border-right: 2px solid white;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
     }
-    .name-header small {
-      display:block; font-size:16px; color:#fff1a0; font-weight:bold;
-      text-shadow: 1px 1px 1px #000, 2px 2px 4px #ffaa00;
-      margin-top:2px;
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
     }
-
-    header { text-align:center; padding:120px 20px 80px; }
-    #introText { font-size:22px; color:#ccc; min-height:26px; }
-
-    section { padding:40px 25px; max-width:900px; margin:30px auto; background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,215,0,0.2); border-radius:15px; backdrop-filter: blur(10px);
-      box-shadow:0 0 20px rgba(255,215,0,0.08);
-      transition: transform .3s, box-shadow .3s;
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: white }
     }
-    section:hover {
+    .cards {
+      position: absolute;
+      bottom: 3rem;
+      left: 3rem;
+      display: flex;
+      gap: 1rem;
+    }
+    .card {
+      background: #111;
+      border: 1px solid #333;
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      width: 200px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
       transform: translateY(-5px);
-      box-shadow:0 0 30px rgba(255,215,0,0.2);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
     }
-
-    h2 { font-size:26px; color:#ffd700; margin-bottom:15px; position:relative; }
-    h2::after { content:''; width:50px;height:3px;background:#ffd700;position:absolute;right:0;bottom:-10px; }
-
-    .projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
-    .project-card { background:rgba(255,255,255,0.1); padding:15px; border-radius:12px;
-      cursor:pointer; position:relative; overflow:hidden;
+    .signature {
+      position: absolute;
+      bottom: 1rem;
+      right: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.6;
     }
-    .project-card img { width:100%; border-radius:8px; transition: transform .3s; }
-    .project-card:hover img { transform: scale(1.05); }
-    .project-card .title { margin-top:10px; font-size:20px; color:#ffd700; }
-
-    .contact { padding-bottom:40px; }
-
-    @media (max-width:600px){
-      .logo-n{font-size:48px;} .name-header h1{font-size:26px;} section{padding:30px;}
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: black;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeOut 2s 2s forwards;
+    }
+    .loader span {
+      width: 50px;
+      height: 50px;
+      border: 5px solid white;
+      border-top: 5px solid gold;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
   </style>
 </head>
 <body>
-  <div id="cosmo-bg"></div>
-
-  <div class="name-header">
-    <span class="logo-n">N</span>
-    <h1>نوید میرزایی</h1>
-    <small>NAVIDMIRZAE</small>
-  </div>
-
-  <header>
-    <p id="introText"></p>
-  </header>
-
-  <section>
-    <h2>درباره من</h2>
-    <p>من نوید هستم، توسعه‌دهنده‌ی اندروید … با تمرکز بر ساخت اپلیکیشن‌های مقیاس‌پذیر و بدون خطا.</p>
-  </section>
-
-  <section>
-    <h2>پروژه‌ها</h2>
-    <div class="projects">
-      <div class="project-card" onclick="alert('نمایش جزئیات پروژه nTranslator');">
-        <img src="screenshot-ntranslator.png" alt="nTranslator">
-        <div class="title">nTranslator</div>
-      </div>
-      <!-- کارت‌های بیشتر اضافه کن اگر بخوای -->
+  <div class="loader"><span></span></div>
+  <canvas id="particles"></canvas>
+  <div class="container">
+    <div class="logo-n">N</div>
+    <div class="name">نوید میرزایی</div>
+    <div class="name-en">NAVID MIRZAEI</div>
+    <div class="typing">توسعه‌دهنده حرفه‌ای نرم‌افزار، عاشق کیفیت و طراحی</div>
+    <div class="cards">
+      <div class="card">nTranslator<br><small>مترجم هوشمند</small></div>
+      <div class="card">کمک‌یار پزشکی<br><small>سیستم نسخه‌نویسی</small></div>
+      <div class="card">برنامه بدنسازی<br><small>Fitness Pro</small></div>
     </div>
-  </section>
-
-  <section class="contact">
-    <h2>تماس با من</h2>
-    <p><i class="fas fa-phone"></i> شماره: <strong>09166674708</strong></p>
-    <p><i class="fas fa-envelope"></i> ایمیل: <strong><a href="mailto:navidmirzae@gmail.com">navidmirzae@gmail.com</a></strong></p>
-    <p><i class="fab fa-instagram"></i> اینستاگرام: <strong><a href="https://instagram.com/navidmirzae1360" target="_blank">@navidmirzae1360</a></strong></p>
-  </section>
-
+    <div class="signature">Navid Mirzaei — Code With Passion</div>
+  </div>
   <script>
-    const text = "توسعه‌دهنده حرفه‌ای اندروید | سازنده nTranslator";
-    let i=0;
-    function typeWriter(){
-      if(i<text.length){
-        document.getElementById("introText").innerHTML+=text.charAt(i);
-        i++;
-        setTimeout(typeWriter,60);
+    // پارتیکل کیهانی ساده
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    let particles = [];
+    for (let i = 0; i < 150; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.5,
+        d: Math.random() * 50
+      });
+    }
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#ffffff';
+      for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      moveParticles();
+    }
+    function moveParticles() {
+      for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        p.y += Math.cos(p.d) + 0.5;
+        p.x += Math.sin(p.d);
+        if (p.x > canvas.width || p.y > canvas.height) {
+          p.x = Math.random() * canvas.width;
+          p.y = -10;
+        }
       }
     }
-    window.onload = typeWriter;
+    setInterval(drawParticles, 33);
   </script>
 </body>
 </html>
