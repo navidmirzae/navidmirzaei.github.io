@@ -4,54 +4,90 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>نوید میرزایی | توسعه‌دهنده اندروید</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Vazirmatn', sans-serif;
       background-color: #0f0f0f;
-      color: white;
+      color: #f0f0f0;
       line-height: 1.8;
     }
     header {
       text-align: center;
-      padding: 50px 20px;
+      padding: 60px 20px;
       background: linear-gradient(to right, #1f1f1f, #2c2c2c);
+      box-shadow: 0 4px 10px rgba(255, 215, 0, 0.2);
     }
     header h1 {
-      font-size: 36px;
+      font-size: 40px;
+      color: #ffd700;
       margin-bottom: 10px;
     }
     header p {
-      font-size: 20px;
+      font-size: 22px;
       color: #ccc;
     }
     section {
-      padding: 40px 20px;
-      max-width: 800px;
+      padding: 50px 20px;
+      max-width: 900px;
       margin: auto;
     }
     h2 {
       font-size: 28px;
       margin-bottom: 20px;
-      border-bottom: 2px solid #ffd700;
-      display: inline-block;
-      padding-bottom: 5px;
+      color: #ffd700;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background-color: #ffd700;
+      position: absolute;
+      bottom: -10px;
+      right: 0;
     }
     ul {
       list-style: none;
       padding: 0;
+    }
+    ul li {
+      margin-bottom: 10px;
+      font-size: 18px;
     }
     ul li::before {
       content: "✔️ ";
       margin-left: 5px;
     }
     a {
-      color: #ffd700;
+      color: #00bfff;
       text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #ffd700;
     }
     .contact p {
       font-size: 18px;
+      margin: 10px 0;
+    }
+    .contact i {
+      margin-left: 8px;
+      color: #ffd700;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 28px;
+      }
+      header p {
+        font-size: 18px;
+      }
+      section {
+        padding: 30px 15px;
+      }
     }
   </style>
 </head>
@@ -84,9 +120,9 @@
 
   <section class="contact">
     <h2>تماس با من</h2>
-    <p>📱 شماره تماس: <strong>09166674708</strong></p>
-    <p>📧 ایمیل: <strong><a href="mailto:navidmirzae@gmail.com">navidmirzae@gmail.com</a></strong></p>
-    <p>📷 اینستاگرام: <strong><a href="https://instagram.com/navidmirzae1360" target="_blank">@navidmirzae1360</a></strong></p>
+    <p><i class="fas fa-phone"></i> شماره تماس: <strong>09166674708</strong></p>
+    <p><i class="fas fa-envelope"></i> ایمیل: <strong><a href="mailto:navidmirzae@gmail.com">navidmirzae@gmail.com</a></strong></p>
+    <p><i class="fab fa-instagram"></i> اینستاگرام: <strong><a href="https://instagram.com/navidmirzae1360" target="_blank">@navidmirzae1360</a></strong></p>
   </section>
 
 </body>
