@@ -2,207 +2,119 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>نوید میرزایی | توسعه‌دهنده اندروید</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Navid Mirzaei | Android Dev</title>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Vazirmatn', sans-serif;
-      height: 100%;
-      background: #000;
-      overflow-x: hidden;
-      color: #fff;
+    html,body { margin:0;padding:0; font-family:'Vazirmatn'; background:#000; overflow-x:hidden; color:#fff; }
+    #cosmo-bg { position:fixed; top:0;left:0;width:100%;height:100%; z-index:-1;
+      background: radial-gradient(circle at center, #202020 0%, #000 70%);
+      animation: glow-bg 15s ease-in-out infinite;
+    }
+    @keyframes glow-bg {
+      0%,100% { background: radial-gradient(circle at center, #202020, #000); }
+      50% { background: radial-gradient(circle at center, #303030, #101010); }
     }
 
-    #particles-js {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: linear-gradient(135deg, #000000, #0d0d0d);
+    .name-header { position:fixed; top:30px; right:40px; text-align:right; z-index:10; }
+    .logo-n {
+      font-size:60px; font-weight:900; color:#ffd700;
+      text-shadow: 4px 4px 0 #aa8800, 8px 8px 0 #775500, 0 0 20px rgba(255,215,0,0.6);
+      transform: rotateX(10deg);
+      display:inline-block; margin-left:8px;
     }
-
-    .name-header {
-      position: fixed;
-      top: 20px;
-      right: 30px;
-      text-align: right;
-      z-index: 10;
-    }
-
     .name-header h1 {
-      font-size: 28px;
-      margin: 0;
-      font-weight: 900;
-      color: #ffd700;
-      text-shadow:
-        0 0 5px #fff8dc,
-        0 0 15px #ffcc00,
-        0 0 30px #ffaa00;
+      display:inline-block;
+      font-size:32px; font-weight:900; color:#ffd700;
+      text-shadow: 3px 3px 0 #aa8800, 6px 6px 0 #775500, 0 0 15px rgba(255,215,0,0.6);
+      transform: rotateX(5deg);
+      margin:0;
     }
-
     .name-header small {
-      font-size: 14px;
-      font-weight: 700;
-      color: #ccc;
-      text-shadow: 0 0 5px #ffd700;
-      display: block;
-      margin-top: 3px;
+      display:block; font-size:16px; color:#fff1a0; font-weight:bold;
+      text-shadow: 1px 1px 1px #000, 2px 2px 4px #ffaa00;
+      margin-top:2px;
     }
 
-    header {
-      text-align: center;
-      padding: 140px 20px 60px;
+    header { text-align:center; padding:120px 20px 80px; }
+    #introText { font-size:22px; color:#ccc; min-height:26px; }
+
+    section { padding:40px 25px; max-width:900px; margin:30px auto; background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,215,0,0.2); border-radius:15px; backdrop-filter: blur(10px);
+      box-shadow:0 0 20px rgba(255,215,0,0.08);
+      transition: transform .3s, box-shadow .3s;
+    }
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow:0 0 30px rgba(255,215,0,0.2);
     }
 
-    header p {
-      font-size: 22px;
-      color: #ccc;
-    }
+    h2 { font-size:26px; color:#ffd700; margin-bottom:15px; position:relative; }
+    h2::after { content:''; width:50px;height:3px;background:#ffd700;position:absolute;right:0;bottom:-10px; }
 
-    section {
-      padding: 40px 25px;
-      max-width: 900px;
-      margin: 30px auto;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 215, 0, 0.15);
-      border-radius: 15px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.05);
+    .projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+    .project-card { background:rgba(255,255,255,0.1); padding:15px; border-radius:12px;
+      cursor:pointer; position:relative; overflow:hidden;
     }
+    .project-card img { width:100%; border-radius:8px; transition: transform .3s; }
+    .project-card:hover img { transform: scale(1.05); }
+    .project-card .title { margin-top:10px; font-size:20px; color:#ffd700; }
 
-    h2 {
-      font-size: 26px;
-      color: #ffd700;
-      margin-bottom: 15px;
-      position: relative;
-    }
+    .contact { padding-bottom:40px; }
 
-    h2::after {
-      content: '';
-      width: 50px;
-      height: 3px;
-      background: #ffd700;
-      position: absolute;
-      right: 0;
-      bottom: -10px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    ul li {
-      padding-right: 25px;
-      margin-bottom: 10px;
-      position: relative;
-    }
-
-    ul li::before {
-      content: "✔️";
-      position: absolute;
-      right: 0;
-    }
-
-    a {
-      color: #00bfff;
-      transition: color 0.3s ease;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: #ffd700;
-    }
-
-    .contact i {
-      margin-left: 8px;
-      color: #ffd700;
-    }
-
-    @media (max-width: 600px) {
-      .name-header h1 { font-size: 22px; }
-      header p { font-size: 18px; }
+    @media (max-width:600px){
+      .logo-n{font-size:48px;} .name-header h1{font-size:26px;} section{padding:30px;}
     }
   </style>
 </head>
 <body>
-  <!-- پارتیکل‌ها -->
-  <div id="particles-js"></div>
+  <div id="cosmo-bg"></div>
 
-  <!-- اسم گوشه بالا -->
   <div class="name-header">
+    <span class="logo-n">N</span>
     <h1>نوید میرزایی</h1>
     <small>NAVIDMIRZAE</small>
   </div>
 
-  <!-- محتوا -->
   <header>
-    <p>توسعه‌دهنده حرفه‌ای اندروید | سازنده nTranslator</p>
+    <p id="introText"></p>
   </header>
 
   <section>
     <h2>درباره من</h2>
-    <p>من نوید هستم، توسعه‌دهنده‌ی اندروید با تمرکز بر ساخت اپلیکیشن‌های مقیاس‌پذیر و بدون خطا. پروژه فعلی من، <strong>nTranslator</strong>، یک اپ ترجمه حرفه‌ایه که با Kotlin و Jetpack Compose نوشته شده.</p>
+    <p>من نوید هستم، توسعه‌دهنده‌ی اندروید … با تمرکز بر ساخت اپلیکیشن‌های مقیاس‌پذیر و بدون خطا.</p>
   </section>
 
   <section>
     <h2>پروژه‌ها</h2>
-    <p><strong>nTranslator:</strong> ترجمه گفتار و نوشتار با رابط کاربری مدرن، چندزبانه، سرعت بالا و امکانات ویژه.</p>
-  </section>
-
-  <section>
-    <h2>مهارت‌ها</h2>
-    <ul>
-      <li>تسلط کامل بر Kotlin و Jetpack Compose</li>
-      <li>مدیریت وابستگی با Gradle و Version Catalog</li>
-      <li>نظم‌دهی با Spotless</li>
-      <li>رفع خطاهای پیچیده و بهینه‌سازی پروژه</li>
-    </ul>
+    <div class="projects">
+      <div class="project-card" onclick="alert('نمایش جزئیات پروژه nTranslator');">
+        <img src="screenshot-ntranslator.png" alt="nTranslator">
+        <div class="title">nTranslator</div>
+      </div>
+      <!-- کارت‌های بیشتر اضافه کن اگر بخوای -->
+    </div>
   </section>
 
   <section class="contact">
     <h2>تماس با من</h2>
-    <p><i class="fas fa-phone"></i> شماره تماس: <strong>09166674708</strong></p>
+    <p><i class="fas fa-phone"></i> شماره: <strong>09166674708</strong></p>
     <p><i class="fas fa-envelope"></i> ایمیل: <strong><a href="mailto:navidmirzae@gmail.com">navidmirzae@gmail.com</a></strong></p>
     <p><i class="fab fa-instagram"></i> اینستاگرام: <strong><a href="https://instagram.com/navidmirzae1360" target="_blank">@navidmirzae1360</a></strong></p>
   </section>
 
-  <!-- کتابخانه particles.js -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
-    particlesJS("particles-js", {
-      particles: {
-        number: { value: 60 },
-        color: { value: "#ffd700" },
-        shape: { type: "circle" },
-        opacity: { value: 0.6 },
-        size: { value: 3 },
-        line_linked: {
-          enable: true,
-          distance: 100,
-          color: "#ffd700",
-          opacity: 0.3,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 1.5,
-          direction: "none",
-          out_mode: "out"
-        }
-      },
-      interactivity: {
-        events: {
-          onhover: { enable: true, mode: "repulse" }
-        }
-      },
-      retina_detect: true
-    });
+    const text = "توسعه‌دهنده حرفه‌ای اندروید | سازنده nTranslator";
+    let i=0;
+    function typeWriter(){
+      if(i<text.length){
+        document.getElementById("introText").innerHTML+=text.charAt(i);
+        i++;
+        setTimeout(typeWriter,60);
+      }
+    }
+    window.onload = typeWriter;
   </script>
 </body>
 </html>
