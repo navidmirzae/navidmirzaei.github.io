@@ -50,10 +50,11 @@
     .planet {
       position: absolute;
       border-radius: 50%;
-      animation: orbit linear infinite;
+      animation: orbit-left linear infinite;
       text-align: center;
       font-size: 0.8rem;
       color: #fff;
+      transform-origin: center right;
     }
 
     .planet span {
@@ -71,19 +72,22 @@
       transform: translate(-50%, -50%);
       box-shadow: 0 0 70px yellow;
       z-index: 1;
+      position: absolute;
+      border-radius: 50%;
     }
 
     .moon {
       width: 12px;
       height: 12px;
       background: #ccc;
-      animation: orbit 4s linear infinite;
+      animation: orbit-left 4s linear infinite;
       border-radius: 50%;
+      position: absolute;
     }
 
-    @keyframes orbit {
+    @keyframes orbit-left {
       0% { transform: rotate(0deg) translateX(var(--distance)) rotate(0deg); }
-      100% { transform: rotate(360deg) translateX(var(--distance)) rotate(-360deg); }
+      100% { transform: rotate(-360deg) translateX(var(--distance)) rotate(360deg); }
     }
 
     .project-section {
@@ -119,18 +123,19 @@
 </head>
 <body>
   <div class="solar-system">
-    <div class="planet sun"><span>خورشید</span></div>
-    <div class="planet" style="--distance: 120px; width: 16px; height: 16px; background: gray; animation-duration: 4s;"><span>عطارد</span></div>
-    <div class="planet" style="--distance: 160px; width: 18px; height: 18px; background: orange; animation-duration: 6s;"><span>زهره</span></div>
-    <div class="planet" style="--distance: 200px; width: 22px; height: 22px; background: blue; animation-duration: 8s;"><span>زمین</span>
-      <div class="moon" style="--distance: 30px;"><span>ماه</span></div>
+    <div class="sun"><span style="position:absolute;left:50%;top:100%;transform:translate(-50%, 10px);color:white">خورشید</span></div>
+    <div class="planet" style="--distance: 120px; width: 16px; height: 16px; background: gray; animation-duration: 4s; top: 50%; left: 50%;"><span>عطارد</span></div>
+    <div class="planet" style="--distance: 160px; width: 18px; height: 18px; background: orange; animation-duration: 6s; top: 50%; left: 50%;"><span>زهره</span></div>
+    <div class="planet" style="--distance: 200px; width: 22px; height: 22px; background: blue; animation-duration: 8s; top: 50%; left: 50%;">
+      <span>زمین</span>
+      <div class="moon" style="--distance: 30px; top: 50%; left: 50%;"><span>ماه</span></div>
     </div>
-    <div class="planet" style="--distance: 240px; width: 20px; height: 20px; background: red; animation-duration: 10s;"><span>مریخ</span></div>
-    <div class="planet" style="--distance: 300px; width: 30px; height: 30px; background: #c96; animation-duration: 12s;"><span>پروتون</span></div>
-    <div class="planet" style="--distance: 360px; width: 28px; height: 28px; background: #ffcc66; animation-duration: 14s;"><span>زحل</span></div>
-    <div class="planet" style="--distance: 420px; width: 26px; height: 26px; background: #66ccff; animation-duration: 16s;"><span>اورانوس</span></div>
-    <div class="planet" style="--distance: 480px; width: 24px; height: 24px; background: #3333ff; animation-duration: 18s;"><span>نپتون</span></div>
-    <div class="planet" style="--distance: 540px; width: 14px; height: 14px; background: #999; animation-duration: 20s;"><span>پلوتون</span></div>
+    <div class="planet" style="--distance: 240px; width: 20px; height: 20px; background: red; animation-duration: 10s; top: 50%; left: 50%;"><span>مریخ</span></div>
+    <div class="planet" style="--distance: 300px; width: 30px; height: 30px; background: #c96; animation-duration: 12s; top: 50%; left: 50%;"><span>پروتون</span></div>
+    <div class="planet" style="--distance: 360px; width: 28px; height: 28px; background: #ffcc66; animation-duration: 14s; top: 50%; left: 50%;"><span>زحل</span></div>
+    <div class="planet" style="--distance: 420px; width: 26px; height: 26px; background: #66ccff; animation-duration: 16s; top: 50%; left: 50%;"><span>اورانوس</span></div>
+    <div class="planet" style="--distance: 480px; width: 24px; height: 24px; background: #3333ff; animation-duration: 18s; top: 50%; left: 50%;"><span>نپتون</span></div>
+    <div class="planet" style="--distance: 540px; width: 14px; height: 14px; background: #999; animation-duration: 20s; top: 50%; left: 50%;"><span>پلوتون</span></div>
   </div>
 
   <header>
