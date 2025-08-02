@@ -1,210 +1,159 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navid Mirzaei | Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navid Mirzaei Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
   <style>
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
       font-family: 'Vazirmatn', sans-serif;
-    }
-    body {
-      background: #000;
+      background-color: #000;
       color: #fff;
       overflow-x: hidden;
     }
-    canvas {
+
+    header {
+      position: relative;
+      z-index: 2;
+      padding: 1rem;
+      text-align: right;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: gold;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    header h2 {
+      font-size: 1rem;
+      font-weight: normal;
+      color: #ccc;
+    }
+
+    .solar-system {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: -1;
+      z-index: 0;
+      overflow: hidden;
+      background: radial-gradient(ellipse at center, #000 60%, #111 100%);
     }
-    .header {
+
+    .planet {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      text-align: right;
+      border-radius: 50%;
+      animation: orbit linear infinite;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #fff;
     }
-    .header h1 {
-      font-size: 28px;
-      font-weight: bold;
-      color: #f5c518;
-      text-shadow: 2px 2px 5px #000;
-    }
-    .header h2 {
-      font-size: 14px;
-      color: #ccc;
-    }
-    .typing {
+
+    .planet span {
       position: absolute;
-      top: 90px;
-      right: 20px;
-      font-size: 20px;
-      color: #0ff;
-      text-shadow: 1px 1px 4px #000;
+      transform: translate(-50%, -150%);
+      white-space: nowrap;
     }
-    .projects {
-      position: absolute;
-      top: 200px;
-      left: 20px;
+
+    .sun {
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, gold, orange, red);
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 50px yellow;
+      z-index: 1;
+    }
+
+    .moon {
+      width: 10px;
+      height: 10px;
+      background: #ccc;
+      animation: orbit 4s linear infinite;
+    }
+
+    @keyframes orbit {
+      0% { transform: rotate(0deg) translateX(var(--distance)) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(var(--distance)) rotate(-360deg); }
+    }
+
+    .project-section {
+      position: relative;
+      z-index: 2;
       display: flex;
-      flex-direction: row;
-      gap: 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 2rem;
     }
-    .card {
-      background: rgba(255,255,255,0.1);
-      padding: 20px;
-      border-radius: 12px;
-      width: 250px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 0 20px #0ff3;
-      cursor: pointer;
-      transition: transform 0.3s;
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
     }
-    .card:hover {
-      transform: scale(1.05);
-    }
+
     .contact {
-      position: absolute;
-      bottom: 40px;
-      right: 20px;
-      color: #ffb400;
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      color: #fff;
     }
+
     .contact a {
-      color: #ffb400;
-      text-decoration: none;
-    }
-    .signature {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      font-family: cursive;
-      font-size: 18px;
-      color: #888;
-    }
-    .planet-label {
-      position: absolute;
-      color: white;
-      font-size: 12px;
-      pointer-events: none;
-      text-shadow: 1px 1px 3px black;
+      color: gold;
     }
   </style>
 </head>
 <body>
-  <canvas id="space"></canvas>
-  <div class="header">
+  <div class="solar-system">
+    <div class="planet sun"><span>Sun</span></div>
+    <div class="planet" style="--distance: 150px; width: 20px; height: 20px; background: blue; animation-duration: 6s;"><span>Earth</span>
+      <div class="moon" style="--distance: 30px;"><span>Moon</span></div>
+    </div>
+    <div class="planet" style="--distance: 200px; width: 30px; height: 30px; background: #c96; animation-duration: 10s;"><span>Jupiter</span></div>
+    <div class="planet" style="--distance: 250px; width: 25px; height: 25px; background: #ffcc66; animation-duration: 12s;"><span>Saturn</span></div>
+    <div class="planet" style="--distance: 300px; width: 20px; height: 20px; background: #66ccff; animation-duration: 14s;"><span>Uranus</span></div>
+    <div class="planet" style="--distance: 350px; width: 18px; height: 18px; background: #3333ff; animation-duration: 16s;"><span>Neptune</span></div>
+    <div class="planet" style="--distance: 400px; width: 10px; height: 10px; background: #999; animation-duration: 18s;"><span>Pluto</span></div>
+  </div>
+
+  <header>
     <h1>نوید میرزایی</h1>
     <h2>NAVID MIRZAEI</h2>
-  </div>
-  <div class="typing" id="typing"></div>
-  <div class="projects">
-    <div class="card">پروژه اول</div>
-    <div class="card">پروژه دوم</div>
-    <div class="card">پروژه سوم</div>
-  </div>
+  </header>
+
+  <section class="project-section">
+    <div class="project-card">
+      <h3>پروژه ۱</h3>
+      <p>توضیحاتی درباره پروژه اول شامل کاربرد، تکنولوژی‌ها و ویژگی‌ها.</p>
+    </div>
+    <div class="project-card">
+      <h3>پروژه ۲</h3>
+      <p>توضیحاتی درباره پروژه دوم شامل کاربرد، تکنولوژی‌ها و ویژگی‌ها.</p>
+    </div>
+    <div class="project-card">
+      <h3>پروژه ۳</h3>
+      <p>توضیحاتی درباره پروژه سوم شامل کاربرد، تکنولوژی‌ها و ویژگی‌ها.</p>
+    </div>
+  </section>
+
   <section class="contact">
     <h2>تماس با من</h2>
     <p><i class="fas fa-phone"></i> شماره تماس: <strong>09166674708</strong></p>
     <p><i class="fas fa-envelope"></i> ایمیل: <strong><a href="mailto:navidmirzae@gmail.com">navidmirzae@gmail.com</a></strong></p>
     <p><i class="fab fa-instagram"></i> اینستاگرام: <strong><a href="https://instagram.com/navidmirzae1360" target="_blank">@navidmirzae1360</a></strong></p>
   </section>
-  <div class="signature">Navid Mirzaei © 2025</div>
-  <script>
-    // Typing Effect
-    const text = "Full Stack Developer | Motion Designer | AI Enthusiast";
-    let i = 0;
-    function typing() {
-      if (i < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typing, 50);
-      }
-    }
-    typing();
-  </script>
-  <script>
-    const canvas = document.getElementById('space');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let stars = [], planets = [];
-
-    function Star() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.radius = Math.random() * 1.5;
-      this.alpha = Math.random();
-      this.draw = function () {
-        ctx.save();
-        ctx.globalAlpha = this.alpha;
-        ctx.fillStyle = 'white';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-
-    for (let i = 0; i < 300; i++) stars.push(new Star());
-
-    // Planets array
-    const planetData = [
-      { name: "خورشید", r: 0, size: 50, color: "#FFD700", glow: true },
-      { name: "زمین", r: 130, size: 10, color: "#00f" },
-      { name: "ماه", r: 150, size: 5, color: "#ccc" },
-      { name: "زحل", r: 190, size: 15, color: "#c93", ring: true },
-      { name: "اورانوس", r: 230, size: 12, color: "#0ff" },
-      { name: "نپتون", r: 270, size: 12, color: "#00aaff" }
-    ];
-
-    let angle = 0;
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      stars.forEach(star => star.draw());
-
-      const cx = canvas.width / 2;
-      const cy = canvas.height / 2;
-
-      planetData.forEach((p, index) => {
-        const a = angle * (1 + index * 0.05);
-        const x = cx + p.r * Math.cos(a);
-        const y = cy + p.r * Math.sin(a);
-
-        ctx.beginPath();
-        ctx.fillStyle = p.color;
-        ctx.shadowColor = p.glow ? p.color : "transparent";
-        ctx.shadowBlur = p.glow ? 40 : 0;
-        ctx.arc(x, y, p.size, 0, 2 * Math.PI);
-        ctx.fill();
-
-        if (p.ring) {
-          ctx.beginPath();
-          ctx.strokeStyle = "#cc9";
-          ctx.lineWidth = 2;
-          ctx.ellipse(x, y, p.size + 4, p.size, 0, 0, 2 * Math.PI);
-          ctx.stroke();
-        }
-
-        // Label each planet
-        ctx.font = "12px Vazirmatn";
-        ctx.fillStyle = "#fff";
-        ctx.fillText(p.name, x + p.size + 4, y);
-      });
-
-      angle += 0.005;
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-  </script>
 </body>
 </html>
