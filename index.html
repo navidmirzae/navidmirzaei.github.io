@@ -3,187 +3,175 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Navid Mirzaei - معرفی</title>
+  <title>Navid Mirzaei - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@500;700&display=swap');
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      direction: rtl;
     }
     body {
       font-family: 'Vazirmatn', sans-serif;
-      background: radial-gradient(ellipse at center, #0a0a0a 0%, #000000 100%);
-      overflow: hidden;
-      color: white;
-    }
-    .container {
-      position: relative;
-      height: 100vh;
-      width: 100vw;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: center;
-      padding: 3rem;
-      direction: rtl;
-    }
-    .name {
-      font-size: 3rem;
-      font-weight: 700;
-      color: gold;
-      text-shadow: 0 0 10px #ffda6a, 0 0 20px #ffd700;
-      transform: translateZ(0);
-    }
-    .name-en {
-      font-size: 1.5rem;
-      color: #ddd;
-      margin-top: 0.5rem;
-      text-shadow: 0 0 5px #888;
-    }
-    .logo-n {
-      position: absolute;
-      top: 2rem;
-      left: 2rem;
-      font-size: 5rem;
-      font-weight: 900;
-      color: #00ffff;
-      text-shadow: 0 0 10px #0ff, 0 0 30px #0ff;
-    }
-    .typing {
-      font-size: 1.5rem;
-      margin-top: 2rem;
-      height: 2rem;
-      border-right: 2px solid white;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
-    }
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    @keyframes blink {
-      from, to { border-color: transparent }
-      50% { border-color: white }
-    }
-    .cards {
-      position: absolute;
-      bottom: 3rem;
-      left: 3rem;
-      display: flex;
-      gap: 1rem;
-    }
-    .card {
-      background: #111;
-      border: 1px solid #333;
-      padding: 1rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-      width: 200px;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
-    }
-    .signature {
-      position: absolute;
-      bottom: 1rem;
-      right: 2rem;
-      font-size: 0.9rem;
-      opacity: 0.6;
+      background: radial-gradient(ellipse at center, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      overflow-x: hidden;
     }
     .loader {
       position: fixed;
       top: 0;
       left: 0;
-      height: 100vh;
-      width: 100vw;
-      background: black;
-      z-index: 999;
+      width: 100%;
+      height: 100%;
+      background: #000;
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: fadeOut 2s 2s forwards;
+      z-index: 9999;
     }
-    .loader span {
-      width: 50px;
-      height: 50px;
-      border: 5px solid white;
+    .loader div {
+      width: 60px;
+      height: 60px;
+      border: 5px solid #fff;
       border-top: 5px solid gold;
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
     @keyframes spin {
-      0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    @keyframes fadeOut {
-      to { opacity: 0; visibility: hidden; }
+    header {
+      padding: 2rem;
+      text-align: right;
+      position: relative;
     }
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
+    header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: gold;
+      text-shadow: 2px 2px 10px rgba(255,215,0,0.5);
+    }
+    header h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ccc;
+    }
+    .logo {
+      font-size: 5rem;
+      color: gold;
+      text-shadow: 0 0 20px gold;
+      position: absolute;
+      top: 1rem;
+      left: 2rem;
+    }
+    .intro {
+      font-size: 1.2rem;
+      margin: 3rem auto;
+      text-align: center;
+    }
+    .typing {
+      border-right: .1em solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink-caret {
+      50% { border-color: transparent; }
+    }
+    .projects {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      width: 250px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+    }
+    .contact {
+      padding: 2rem;
+      background: #111;
+      border-top: 2px solid gold;
+    }
+    .contact h2 {
+      color: gold;
+      margin-bottom: 1rem;
+    }
+    .contact p {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+    .contact a {
+      color: gold;
+      text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: #777;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <div class="loader"><span></span></div>
-  <canvas id="particles"></canvas>
-  <div class="container">
-    <div class="logo-n">N</div>
-    <div class="name">نوید میرزایی</div>
-    <div class="name-en">NAVID MIRZAEI</div>
-    <div class="typing">توسعه‌دهنده حرفه‌ای نرم‌افزار، عاشق کیفیت و طراحی</div>
-    <div class="cards">
-      <div class="card">nTranslator<br><small>مترجم هوشمند</small></div>
-      <div class="card">کمک‌یار پزشکی<br><small>سیستم نسخه‌نویسی</small></div>
-      <div class="card">برنامه بدنسازی<br><small>Fitness Pro</small></div>
+  <div class="loader"><div></div></div>
+
+  <header>
+    <div class="logo">N</div>
+    <h1>نوید میرزایی</h1>
+    <h2>NAVID MIRZAEI</h2>
+  </header>
+
+  <section class="intro">
+    <p class="typing">طراح و برنامه‌نویس اپلیکیشن‌های حرفه‌ای اندروید، ویندوز و وب</p>
+  </section>
+
+  <section class="projects">
+    <div class="card">
+      <h3>nTranslator</h3>
+      <p>مترجم حرفه‌ای چندزبانه با ذخیره‌سازی هوشمند</p>
     </div>
-    <div class="signature">Navid Mirzaei — Code With Passion</div>
-  </div>
+    <div class="card">
+      <h3>کمک‌یار پزشکی</h3>
+      <p>سامانه تخصصی نسخه‌نویسی، دارو و بیماری با نقشه بدن</p>
+    </div>
+    <div class="card">
+      <h3>اپ بدنسازی</h3>
+      <p>برنامه تمرین، تغذیه و آموزش با زبان فارسی و انگلیسی</p>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>تماس با من</h2>
+    <p><i class="fas fa-phone"></i> شماره تماس: <strong>09166674708</strong></p>
+    <p><i class="fas fa-envelope"></i> ایمیل: <strong><a href="mailto:navidmirzae@gmail.com">navidmirzae@gmail.com</a></strong></p>
+    <p><i class="fab fa-instagram"></i> اینستاگرام: <strong><a href="https://instagram.com/navidmirzae1360" target="_blank">@navidmirzae1360</a></strong></p>
+  </section>
+
+  <footer>
+    Navid Mirzaei — Code With Passion ❤️
+  </footer>
+
   <script>
-    // پارتیکل کیهانی ساده
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    let particles = [];
-    for (let i = 0; i < 150; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.5,
-        d: Math.random() * 50
-      });
-    }
-    function drawParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#ffffff';
-      for (let i = 0; i < particles.length; i++) {
-        let p = particles[i];
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      moveParticles();
-    }
-    function moveParticles() {
-      for (let i = 0; i < particles.length; i++) {
-        let p = particles[i];
-        p.y += Math.cos(p.d) + 0.5;
-        p.x += Math.sin(p.d);
-        if (p.x > canvas.width || p.y > canvas.height) {
-          p.x = Math.random() * canvas.width;
-          p.y = -10;
-        }
-      }
-    }
-    setInterval(drawParticles, 33);
+    window.addEventListener("load", () => {
+      document.querySelector(".loader").style.display = "none";
+    });
   </script>
 </body>
 </html>
