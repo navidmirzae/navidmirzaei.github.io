@@ -1,57 +1,67 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>نوید میرزایی | توسعه‌دهنده اندروید</title>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       font-family: 'Vazirmatn', sans-serif;
-      background: linear-gradient(135deg, #000000, #1a1a1a);
-      background-attachment: fixed;
-      color: #f0f0f0;
-      line-height: 1.8;
+      height: 100%;
+      background: #000;
       overflow-x: hidden;
+      color: #fff;
     }
 
-    .overlay {
-      background: rgba(0, 0, 0, 0.85);
-      padding: 0;
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, #000000, #0d0d0d);
+    }
+
+    .name-header {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      text-align: right;
+      z-index: 10;
+    }
+
+    .name-header h1 {
+      font-size: 28px;
       margin: 0;
-      min-height: 100vh;
+      font-weight: 900;
+      color: #ffd700;
+      text-shadow:
+        0 0 5px #fff8dc,
+        0 0 15px #ffcc00,
+        0 0 30px #ffaa00;
+    }
+
+    .name-header small {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ccc;
+      text-shadow: 0 0 5px #ffd700;
+      display: block;
+      margin-top: 3px;
     }
 
     header {
       text-align: center;
-      padding: 100px 20px 60px;
-    }
-
-    header h1 {
-      font-size: 60px;
-      font-weight: 700;
-      color: #ffd700;
-      text-shadow:
-        0 0 5px #fff8dc,
-        0 0 10px #ffd700,
-        0 0 15px #ffcc00,
-        0 0 20px #ffaa00;
-      transform: perspective(500px) rotateX(5deg);
-      animation: shine 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes shine {
-      0% { text-shadow: 0 0 5px #fff8dc, 0 0 10px #ffd700; }
-      100% { text-shadow: 0 0 15px #fff, 0 0 30px #ffaa00; }
+      padding: 140px 20px 60px;
     }
 
     header p {
       font-size: 22px;
       color: #ccc;
-      margin-top: 10px;
-      animation: fadeIn 1.5s ease-in-out;
     }
 
     section {
@@ -59,32 +69,27 @@
       max-width: 900px;
       margin: 30px auto;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 215, 0, 0.2);
+      border: 1px solid rgba(255, 215, 0, 0.15);
       border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.08);
       backdrop-filter: blur(10px);
-      animation: slideUp 1s ease-out;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.05);
     }
 
     h2 {
-      font-size: 30px;
-      margin-bottom: 20px;
+      font-size: 26px;
       color: #ffd700;
-      text-shadow:
-        1px 1px 2px #aa8800,
-        0 0 5px #ffaa00;
+      margin-bottom: 15px;
       position: relative;
     }
 
     h2::after {
       content: '';
-      display: block;
-      width: 60px;
+      width: 50px;
       height: 3px;
-      background-color: #ffd700;
+      background: #ffd700;
       position: absolute;
-      bottom: -10px;
       right: 0;
+      bottom: -10px;
     }
 
     ul {
@@ -93,32 +98,25 @@
     }
 
     ul li {
-      margin-bottom: 10px;
-      font-size: 18px;
-      position: relative;
       padding-right: 25px;
+      margin-bottom: 10px;
+      position: relative;
     }
 
     ul li::before {
       content: "✔️";
       position: absolute;
       right: 0;
-      top: 2px;
     }
 
     a {
       color: #00bfff;
-      text-decoration: none;
       transition: color 0.3s ease;
+      text-decoration: none;
     }
 
     a:hover {
       color: #ffd700;
-    }
-
-    .contact p {
-      font-size: 18px;
-      margin: 10px 0;
     }
 
     .contact i {
@@ -126,62 +124,85 @@
       color: #ffd700;
     }
 
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    @keyframes slideUp {
-      from {transform: translateY(30px); opacity: 0;}
-      to {transform: translateY(0); opacity: 1;}
-    }
-
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 36px;
-      }
-      header p {
-        font-size: 18px;
-      }
-      section {
-        padding: 30px 15px;
-      }
+      .name-header h1 { font-size: 22px; }
+      header p { font-size: 18px; }
     }
   </style>
 </head>
 <body>
-  <div class="overlay">
-    <header>
-      <h1>نوید میرزایی</h1>
-      <p>توسعه‌دهنده حرفه‌ای اندروید | سازنده nTranslator</p>
-    </header>
+  <!-- پارتیکل‌ها -->
+  <div id="particles-js"></div>
 
-    <section>
-      <h2>درباره من</h2>
-      <p>من نوید هستم، توسعه‌دهنده‌ی اندروید با تمرکز بر ساخت اپلیکیشن‌های مقیاس‌پذیر و بدون خطا. پروژه فعلی من، <strong>nTranslator</strong>، یک اپلیکیشن ترجمه حرفه‌ایه که با استفاده از Kotlin، Compose و Spotless توسعه داده می‌شه.</p>
-    </section>
-
-    <section>
-      <h2>پروژه‌ها</h2>
-      <p><strong>nTranslator:</strong> اپلیکیشن ترجمه زبان با رابط کاربری مدرن، پشتیبانی از چند زبان و قابلیت‌های هوشمند برای ترجمه متون و گفتار.</p>
-    </section>
-
-    <section>
-      <h2>مهارت‌ها</h2>
-      <ul>
-        <li>تسلط کامل بر Kotlin و Jetpack Compose</li>
-        <li>پیکربندی پیشرفته Gradle با Version Catalog</li>
-        <li>استفاده از Spotless برای حفظ کیفیت کد</li>
-        <li>عیب‌یابی و رفع خطاهای پیچیده پروژه‌ها</li>
-      </ul>
-    </section>
-
-    <section class="contact">
-      <h2>تماس با من</h2>
-      <p><i class="fas fa-phone"></i> شماره تماس: <strong>09166674708</strong></p>
-      <p><i class="fas fa-envelope"></i> ایمیل: <strong><a href="mailto:navidmirzae@gmail.com">navidmirzae@gmail.com</a></strong></p>
-      <p><i class="fab fa-instagram"></i> اینستاگرام: <strong><a href="https://instagram.com/navidmirzae1360" target="_blank">@navidmirzae1360</a></strong></p>
-    </section>
+  <!-- اسم گوشه بالا -->
+  <div class="name-header">
+    <h1>نوید میرزایی</h1>
+    <small>NAVIDMIRZAE</small>
   </div>
+
+  <!-- محتوا -->
+  <header>
+    <p>توسعه‌دهنده حرفه‌ای اندروید | سازنده nTranslator</p>
+  </header>
+
+  <section>
+    <h2>درباره من</h2>
+    <p>من نوید هستم، توسعه‌دهنده‌ی اندروید با تمرکز بر ساخت اپلیکیشن‌های مقیاس‌پذیر و بدون خطا. پروژه فعلی من، <strong>nTranslator</strong>، یک اپ ترجمه حرفه‌ایه که با Kotlin و Jetpack Compose نوشته شده.</p>
+  </section>
+
+  <section>
+    <h2>پروژه‌ها</h2>
+    <p><strong>nTranslator:</strong> ترجمه گفتار و نوشتار با رابط کاربری مدرن، چندزبانه، سرعت بالا و امکانات ویژه.</p>
+  </section>
+
+  <section>
+    <h2>مهارت‌ها</h2>
+    <ul>
+      <li>تسلط کامل بر Kotlin و Jetpack Compose</li>
+      <li>مدیریت وابستگی با Gradle و Version Catalog</li>
+      <li>نظم‌دهی با Spotless</li>
+      <li>رفع خطاهای پیچیده و بهینه‌سازی پروژه</li>
+    </ul>
+  </section>
+
+  <section class="contact">
+    <h2>تماس با من</h2>
+    <p><i class="fas fa-phone"></i> شماره تماس: <strong>09166674708</strong></p>
+    <p><i class="fas fa-envelope"></i> ایمیل: <strong><a href="mailto:navidmirzae@gmail.com">navidmirzae@gmail.com</a></strong></p>
+    <p><i class="fab fa-instagram"></i> اینستاگرام: <strong><a href="https://instagram.com/navidmirzae1360" target="_blank">@navidmirzae1360</a></strong></p>
+  </section>
+
+  <!-- کتابخانه particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60 },
+        color: { value: "#ffd700" },
+        shape: { type: "circle" },
+        opacity: { value: 0.6 },
+        size: { value: 3 },
+        line_linked: {
+          enable: true,
+          distance: 100,
+          color: "#ffd700",
+          opacity: 0.3,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1.5,
+          direction: "none",
+          out_mode: "out"
+        }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
 </body>
 </html>
